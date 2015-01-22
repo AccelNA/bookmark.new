@@ -3,6 +3,5 @@
 .classpath
 .project
 build
-WebContent
 src/util
 src/AwsCredentials.properties

@@ -19,23 +19,33 @@ public class UserFacade {
               return userService.createUser(user);
 }
 
-    public boolean loginUser(String user) throws JSONException {
-        boolean result = false;
-        JSONObject jObject  = new JSONObject(user);
-        String key= jObject.getString("bookmark_user_password");
-      
-        try {
-            String password= userService.loginUser(user);
-            if(key.equals(password)){
-                return true; 
-             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("authentication failed");
-            System.err.println(e.getMessage());
-      
-        }
-        return result ;
+    public boolean loginUser(String user) throws Exception {
+        return userService.loginUser(user);
+//        JSONObject jObject  = new JSONObject(user);
+//        String key= jObject.getString("bookmark_user_password");
+//      
+//        try {
+//            String password= userService.loginUser(user);
+//            System.out.println("key"+key);
+//            System.out.println("password"+password);
+//            if(password.contains(key)){
+//                result = true; 
+//             }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            System.err.println(e.getMessage());
+//      
+//        }
+       
         
+    }
+
+    public boolean updateUser(String user) throws Exception {
+        return userService.updateUserToken(user);
+        
+    }
+
+    public boolean logoutUser(String user) throws Exception {
+        return userService.logoutUser(user);
     }
 }

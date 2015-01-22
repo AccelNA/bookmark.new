@@ -1,0 +1,121 @@
+<div data-ng-init="initupdateresource()">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".navbar-inverse-collapse"> <i
+					class="icon-reorder shaded"></i>
+				</a> <a class="brand" href="#"> Resource Home </a>
+
+				<div class="nav-collapse collapse navbar-inverse-collapse">
+
+					<ul class="nav pull-right">
+
+
+
+						<li><a href="#/resource">Resource </a></li>
+
+						<li><a href="#/resourcegroup">Resource Group </a></li>
+						<li><a href="#/signin">Log out </a></li>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container" ng-controller="resourceController">
+		<div class="row">
+			<div class="span6 offset3">
+				<div class="content">
+					<div class="module">
+						<div class="module-head">
+							<h3>Resource Management</h3>
+						</div>
+						<div class="module-body">
+							<alert ng-repeat="alert in alerts" type="{{alert.type}}"
+								close="closeAlert($index)">{{alert.msg}}</alert>
+							<form name="resourceForm" class="form-horizontal row-fluid"
+								ng-submit="fnUpdateresource()" novalidate>
+								<div class="control-group">
+									<label class="control-label" for="Bookmark_resource_name">Resource
+										Name</label>
+									<div class="controls">
+										<input type="hidden" name="bookmark_user_token"
+											ng-model="userData.token"> 
+											<input type="hidden" name="Bookmark_resourcegroup_name"
+											ng-model="userData.Bookmark_resourcegroup_name">
+											<input type="hidden" name="Bookmark_resource_priority"
+											ng-model="userData.Bookmark_resource_priority" readonly>
+											<input type="text"
+											name="Bookmark_resource_name"
+											ng-model="resourcename" class="span10"
+											required>
+										<p
+											ng-show="resourceForm.Bookmark_resource_name.$invalid && !resourceForm.Bookmark_resource_name.$pristine"
+											class="help-block has-error">Resource Name is required.</p>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="Bookmark_resource_priority">Resource
+										Priority</label>
+									<div class="controls">
+										<select data-ng-options="options1 for options1 in options"
+											data-ng-model="resourcepriority"></select>
+										<p
+											ng-show="resourceForm.Bookmark_resource_priority.$invalid && !resourceForm.Bookmark_resource_priority.$pristine"
+											class="help-block has-error">Resource Priority is
+											required.</p>
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label class="control-label" for="Bookmark_resource_decription">Resource
+										Description</label>
+									<div class="controls">
+										<textarea name="Bookmark_resource_decription"
+											ng-model="resourcedescription"
+											class="span10" required></textarea>
+										<p
+											ng-show="resourceForm.Bookmark_resource_decription.$invalid && !resourceForm.Bookmark_resource_decription.$pristine"
+											class="help-block has-error">Description is required.</p>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="Bookmark_resource_path">Resource
+										path</label>
+									<div class="controls">
+										<textarea name="Bookmark_resource_path"
+											ng-model="resourcepath" class="span10"
+											required></textarea>
+										<p
+											ng-show="resourceForm.Bookmark_resource_path.$invalid && !resourceForm.Bookmark_resource_path.$pristine"
+											class="help-block has-error">Resource Path is required.</p>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="Bookmark_resourcegroup_name">Resource
+										Group Name</label>
+									<div class="controls">
+
+
+										<select data-ng-options="data1 for data1 in data"
+											data-ng-model="resourcegroupname"></select>
+										<p
+											ng-show="resourceForm.Bookmark_resourcegroup_name.$invalid && !resourceForm.Bookmark_resourcegroup_name.$pristine"
+											class="help-block has-error">Resource Group Name is
+											required.</p>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="controls">
+										<button type="submit" class="btn btn-primary pull-left"
+											ng-disabled="resourceForm.$invalid">Update Resource</button>
+									</div>
+									<p ng-show="successmsg" class="help-block has-error" ng-bind="successmsg"></p> 
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!--/.content-->
+			</div>
+			<!--/.span9-->
+		</div>

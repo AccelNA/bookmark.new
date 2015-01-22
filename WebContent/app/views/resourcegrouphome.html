@@ -1,0 +1,88 @@
+<div data-ng-init="grouplist()">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".navbar-inverse-collapse"> <i
+					class="icon-reorder shaded"></i>
+				</a> <a class="brand" href="#/resourcehome"> Resource Home </a>
+
+				<div class="nav-collapse collapse navbar-inverse-collapse">
+
+					<ul class="nav pull-right">
+
+						
+
+						<li><a href="#/resource">Resource </a></li>
+
+						<li><a href="#/resourcegroup">Resource Group </a></li>
+						<li><a href="#/signin">Log out </a></li>
+</div>
+</div>
+</div>
+</div>
+<div class="container" ng-controller="resourceGroupController" >
+    <div class="row">
+	    <div class="span6 offset3">
+		    <div class="content">
+			    <div class="module">
+				    <div class="module-head">
+					    <h3>Resource Group Management</h3>
+				    </div>
+				    <div class="module-body">
+                        <alert data-ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+					    <form name="resourcegroupForm" class="form-horizontal row-fluid" ng-submit="fnAddresourcegroup(resourcegroupForm.$valid)" novalidate>
+						    <div class="control-group">
+							    <label class="control-label" for="Bookmark_resourcegroup_name">Group Name</label>
+							    <div class="controls">
+							    <input type="hidden" name="bookmark_user_token" ng-model="userData.token"  >
+								    <input type="text" name="Bookmark_resourcegroup_name" value="nm" ng-model="userData.Bookmark_resourcegroup_name" class="span10" required >
+                                    <p ng-show="resourcegroupForm.Bookmark_resourcegroup_name.$invalid && !resourcegroupForm.Bookmark_resourcegroup_name.$pristine" class="help-block has-error"> Resource GroupName is required.</p>
+							    </div>
+						    </div>
+
+                            
+                            <div class="control-group">
+							    <label class="control-label" for="Bookmark_resourcegroup_decription">Resource Group Description</label>
+							    <div class="controls">
+                                    <textarea name="Bookmark_resourcegroup_decription" value="desc" ng-model="userData.Bookmark_resourcegroup_decription" class="span10" required></textarea>
+                                    <p ng-show="resourcegroupForm.Bookmark_resourcegroup_decription.$invalid && !resourcegroupForm.Bookmark_resourcegroup_decription.$pristine" class="help-block has-error">Description is required.</p>
+							    </div>
+						    </div>
+
+						    <div class="control-group">
+							    <div class="controls">
+								    <button type="submit" class="btn btn-primary pull-left" ng-disabled="resourcegroupForm.$invalid">Add Resource Group</button>
+							    </div>
+						    </div>
+						    <p ng-show="successmsg" class="help-block has-error" ng-bind="successmsg"></p>    
+					    </form>
+				    </div>
+			    </div>
+		    </div><!--/.content-->
+	    </div><!--/.span9-->    
+	      
+    </div>
+     
+   <div class="row">
+        <div class="span12">
+            <input type="text" ng-model="search" placeholder="Search...">
+        </div>
+    </div>
+   
+    <table data-ng-table="tableParams" class="table table-bordered">       
+        <tr data-ng-repeat="groups in tabledata | filter:search">
+            <td data-title="'Resource Group Name'"  sortable="'groupName'">
+                {{groups.groupName}}
+            </td>
+            
+            <td data-title="'Description'">
+                {{groups.groupDescription}}
+            </td>
+            <td data-title="'Action'" align="center" style="text-align: center;">
+            <i class="icon-pencil" ng-click="fnEditgroup( groups );" title="Edit"></i>
+            <i class="icon-remove" ng-click="fnRemoveResourceGroup(groups.groupName );" confirmation-needed="Are you sure you want to delete this user?" title="Delete"></i>
+        </td>
+        </tr>
+    </table>
+</div>

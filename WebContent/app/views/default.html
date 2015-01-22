@@ -1,0 +1,72 @@
+<div class="navbar navbar-fixed-top" >
+		<div class="navbar-inner">
+			<div class="container"  >
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".navbar-inverse-collapse"> <i
+					class="icon-reorder shaded"></i>
+				</a> <a class="brand" href="#"> Bookmark </a>
+
+				<div class="nav-collapse collapse navbar-inverse-collapse">
+
+					<ul class="nav pull-right">
+						<li><a href="#/signup"> Sign Up </a></li>
+						<li><a href="#/signin"> Sign In </a></li>
+           				
+					</ul>
+				</div>
+				<!-- /.nav-collapse -->
+			</div>
+		</div>
+		<!-- /navbar-inner -->
+	</div>
+	
+	<div class="container" data-ng-controller="loginController">
+	<div class="row">
+		<div class="module module-login span4 offset4">
+			<form class="form-vertical" id="frmLogin" name="frmLogin"  ng-submit="loginuser(frmLogin.$valid)">
+                 <div class="control-group" ng-class="{ 'has-error' : frmLogin.name.$invalid && !frmLogin.name.$pristine }">
+				<div class="module-head">
+					<h3>Sign In</h3>
+				</div>
+				<div class="module-body">
+					<div class="control-group">
+						<div class="controls row-fluid">
+							<input class="span12" type="text" id="inputEmail" placeholder="Username" data-ng-model="Logindata.bookmark_user_email" name="inputEmail" required>
+                             <div data-ng-show="frmLogin.inputEmail.$dirty && frmLogin.inputEmail.$invalid">
+                                <span data-ng-show="frmLogin.inputEmail.$error.required">username required!</span>
+                              </div>
+                        
+                        </div>
+					</div>
+					<div class="control-group">
+						<div class="controls row-fluid">
+							<input class="span12" type="password" id="inputPassword" placeholder="Password" data-ng-model="Logindata.bookmark_user_password" name="password" required>
+                             <div data-ng-show="frmLogin.password.$dirty && frmLogin.password.$invalid">
+                                <span data-ng-show="frmLogin.password.$error.required">password required!</span>
+                              </div>
+                            
+                        </div>
+					</div>
+				</div>
+				<div class="module-foot">
+					<div class="control-group">
+						<div class="controls clearfix">
+							<button type="submit" class="btn btn-primary pull-right" ng-disabled="loginuser.$invalid">Sign Up</button>
+							 <p ng-show="errormsg" class="help-block has-error" ng-bind="errormsg"></p>
+						<!--  	<label class="checkbox">
+								<input type="checkbox" data-ng-model="Logindata.remeberMe" value="1"> Remember me
+							</label>-->
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+	
+	<!--/.wrapper-->
+	<div class="footer">
+		<div class="container">
+			<b class="copyright">&copy; 2014 Bookmark </b>All rights reserved.
+		</div>
+	</div>

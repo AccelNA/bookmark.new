@@ -1,0 +1,83 @@
+<div class="navbar navbar-fixed-top" >
+		<div class="navbar-inner">
+			<div class="container"  >
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".navbar-inverse-collapse"> <i
+					class="icon-reorder shaded"></i>
+				</a> <a class="brand" href="#"> Bookmark </a>
+
+				<div class="nav-collapse collapse navbar-inverse-collapse">
+
+					<ul class="nav pull-right">
+						<li><a href="#/signin"> Sign In </a></li>
+           				
+					</ul>
+				</div>
+				<!-- /.nav-collapse -->
+			</div>
+		</div>
+		<!-- /navbar-inner -->
+	</div><div class="container" ng-controller="userController">
+    <div class="row">
+	    <div class="span6 offset3">
+		    <div class="content">
+			    <div class="module">
+				    <div class="module-head">
+					    <h3>Sign Up</h3>
+				    </div>
+				    <div class="module-body">
+                        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+					    <form name="signupForm" class="form-horizontal row-fluid" ng-submit="fnSignup(signupForm.$valid)" novalidate>
+						    <div class="control-group">
+							    <label class="control-label" for="name">First Name</label>
+							    <div class="controls">
+								    <input type="text" name="name" ng-model="signupData.bookmark_user_firstname" class="span10" required >
+                                    <p ng-show="signupForm.name.$invalid && !signupForm.name.$pristine" class="help-block has-error">Name is required.</p>
+							    </div>
+						    </div>
+						    <div class="control-group">
+							    <label class="control-label" for="lastname">Last Name</label>
+							    <div class="controls">
+								    <input type="text" name="lastname" ng-model="signupData.bookmark_user_lastname" class="span10" required >
+                                    <p ng-show="signupForm.lastname.$invalid && !signupForm.lastname.$pristine" class="help-block has-error">Last Name is required.</p>
+							    </div>
+						    </div>
+                            <div class="control-group">
+							    <label class="control-label" for="emailId">Email Id</label>
+							    <div class="controls">
+								    <input type="email" name="emailId" ng-model="signupData.bookmark_user_email" class="span10" required>
+                                    <p ng-show="signupForm.emailId.$invalid && !signupForm.emailId.$pristine" class="help-block has-error">Enter a valid email.</p>
+
+							    </div>
+						    </div>
+                            <div class="control-group">
+							    <label class="control-label" for="password">Passowrd</label>
+							    <div class="controls">
+								    <input type="password" name="password" ng-model="signupData.bookmark_user_password" class="span10" required ng-minlength="5" ng-maxlength="15">
+                                    <p ng-show="signupForm.password.$error.minlength" class="help-block has-error">Password is too short.</p>
+                                    <p ng-show="signupForm.password.$error.maxlength" class="help-block has-error">Password is too long.</p>
+							    </div>
+						    </div>
+                            <!--  <div class="control-group">
+							    <label class="control-label" for="confirmPassword">Confirm Password</label>
+							    <div class="controls">
+                                    <input type="password" name="confirmPassword" ng-model="signupData.confirmPassword" class="span10" required ng-minlength="5" ng-maxlength="15" equals="{{signupData.password}}">
+                                    <p ng-show="signupForm.confirmPassword.$error.equals" class="help-block has-error">Passwords don't match.</p>
+                                    <p ng-show="signupForm.confirmPassword.$error.minlength" class="help-block has-error">Confirm Password is too short.</p>
+                                    <p ng-show="signupForm.confirmPassword.$error.maxlength" class="help-block has-error">Confirm Password is too long.</p>
+							    </div>
+						    </div>-->
+						    <div class="control-group">
+							    <div class="controls">
+								    <button type="submit" class="btn btn-primary pull-left" ng-disabled="signupForm.$invalid">Sign Up</button>
+							    </div>
+						    </div>
+						    
+						    <p ng-show="successmsg" class="help-block has-error" ng-bind="successmsg"></p>
+					    </form>
+				    </div>
+			    </div>
+		    </div><!--/.content-->
+	    </div><!--/.span9-->
+    </div>
+</div><!--/.container-->
