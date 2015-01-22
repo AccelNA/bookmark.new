@@ -37,8 +37,20 @@ User can sign up to this tool for the firts time and using the username and pass
 Resource Home Screen will display all the resources saved by the logged  User in Descending Order of the Priority.
 ![Home](https://github.com/AccelNA/aws-coe/blob/master/contents/images/Bookmark/bookmark17.PNG)<br/>
 
+* Resource Group Screen
+![Resource Group](https://github.com/AccelNA/aws-coe/blob/master/contents/images/Bookmark/bookmark11.PNG)<br/>
+
+* Resource Group Edit Screen
+![Resource Group Edit](https://github.com/AccelNA/aws-coe/blob/master/contents/images/Bookmark/bookmark10.PNG)<br/>
+
+* Resource Screen
+![Resource](https://github.com/AccelNA/aws-coe/blob/master/contents/images/Bookmark/bookmark12.PNG)<br/>
+
+*Resource Edit Screen 
 
 
+* Notes Screen
+![Notes](https://github.com/AccelNA/aws-coe/blob/master/contents/images/Bookmark/bookmark16.PNG)<br/>
 
 
 
