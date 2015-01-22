@@ -28,7 +28,14 @@ User can sign up to this tool for the firts time and using the username and pass
 
 ##Screen Shots
 * User Sign Up Screen
+![Sign Up](https://github.com/AccelNA/aws-coe/blob/master/contents/images/Bookmark/bookmark1.PNG)<br/>
 
+* User Sign In 
+![Sign In](https://github.com/AccelNA/aws-coe/blob/master/contents/images/Bookmark/bookmark4.PNG)<br/>
+
+* Resource Home Screen
+Resource Home Screen will display all the resources saved by the logged  User in Descending Order of the Priority.
+![Home](https://github.com/AccelNA/aws-coe/blob/master/contents/images/Bookmark/bookmark17.PNG)<br/>
 
 
 
