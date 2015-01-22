@@ -1,4 +1,4 @@
 bookmark.new
 ============
 
-Bookmarking tool for managing digital resources. 
+Bookmarking tool for managing digital resources.. 
