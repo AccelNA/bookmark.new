@@ -77,8 +77,8 @@ To build this application You need to have some configurations done in your Ecli
 * Create a AWS JAVA Web Project with the name bookmark.new
 * Then copy the things in the webcontent folder in downloaded code to the Webcontent folder in the newly Created project and the rest of the code in the src folder created inside the javaResources of the newly created project
 * Create the Four tables in the aws DynamoDB with the table name specified in the service.java files of the folder .
-* Please refer the code to in the service.java file to get to know the specified hash key and range key for each table.
-* There will be a AWS credential file inside the src of teh newly created project, Please dont forget to ignore that file before committing to git or any other place where there is public access to your code.
+* Please refer the code in the service.java file to get to know the specified hash key and range key for each table.
+* There will be a AWS credential file inside the src of the newly created project, Please dont forget to ignore that file before committing to git or any other place where there is public access to your code.
 
 [Technologies Used]: #Technology
 [Features]: #Features
