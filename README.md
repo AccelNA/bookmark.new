@@ -54,7 +54,12 @@ Resource Home Screen will display all the resources saved by the logged  User in
 
 ##<a name="Technology"></a>Technologies Used
 
-
+* Cloud: Amazon Web Services (AWS)
+* Database: Amazon DynamoDB
+* Server-side: Java
+* Web Framework: Spring
+* Frontend Framework: AngularJS
+* RWD: Bootstra
 
 ##<a name="Build"></a>How to build
 To build this application You need to have some configurations done in your Eclipse IDE
