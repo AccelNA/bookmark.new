@@ -21,8 +21,8 @@ User can sign up to this tool for the firts time and using the username and pass
 * Editing an existing ResourceGroup
 * Deleting an existing ResourceGroup
 * Resource: The meta data of the digital resource is reffered as Resource here. A user can manage all type of resource according to his priority.
-* Adding A resource
-* Editing teh details of an existing Resource
+* Adding a resource
+* Editing the details of an existing Resource
 * Deleting an existing Resource
 * Adding Notes: Notes can be added for a resource
 
