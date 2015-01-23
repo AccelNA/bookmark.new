@@ -5,25 +5,25 @@ Bookmark.new is a Bookmarking tool for managing digital resources..
 ###Table of Contents  
 * [Features][]
 * [Functionality][]
-* [Technologies Reffered][]
+* [Technologies Used][]
 * [How to build][]
 
 ##<a name="Features"></a>Features
-Bookmark.new is a tool which helps users to save the meta data of the Resources and keep a track of the same, this application helps users to bookmark the Resources; that the user may not be able to  refer immediately. The user will be able to bookmark the resource with priority is yet another feature. If the resource is very important for the user , he can bookmark the resource with a high priority and if the resource is not very important for the user but need to remember the same then he can bookmark the resource with a low priority. The user can add notes of a particular resource after refferring the same can be done using this tool.The user will be able to book mark anytype of resource here like if he want to bookmark a song he can do that or he want to bookmark an important document of angular js he will be able to do that too..
+Bookmark.new is a tool which helps users to save the meta data of the Resources and keep a track of the same, this application helps users to bookmark the Resources; that the user may not be able to  refer immediately. The user will be able to bookmark the resource with priority is yet another feature. If the resource is very important for the user , he can bookmark the resource with a high priority and if the resource is not very important for the user but need to remember the same then he can bookmark the resource with a low priority. The user can add notes of a particular resource after refferring the same can be done using this tool.The user will be able to book mark anytype of resource here like if he want to bookmark a song he can do that or he want to bookmark an important document of angular js he will be able to do that too.Moreover bookmark.new is a cloud enabled tool which saves the data into Dynamodb( The nosql service provided by amazon) which enhances fast and huge data saving .
 
 User can sign up to this tool for the firts time and using the username and password provided he will be able to login after that. He can add ResourceGroups like github,stackoverflow,soundcloud etc in the ResourceGroup Screen and while adding the resource he can refer from which resourceGroup he got that particular resource, he can mention the path which may be a github location or w3schools location etc.A user can also  add anote after reading or going through a partcular resource  and can save that too.
 
 ##<a name="Functionality"></a>Functionality
-* User Sign Up
-* User Sign IN
+* Registering a user
+* Login for a user
 * ResourceGroup: The locations where the Resources reside.
-* ResourceGroupAdd
-* ResourceGroupUpdate
-* ResourceGroupDelete
+* Adding a ResourceGroup
+* Editing an existing ResourceGroup
+* Deleting an existing ResourceGroup
 * Resource: The meta data of the digital resource is reffered as Resource here. A user can manage all type of resource according to his priority.
-* ResourceAdd
-* ResourecEdit
-* ResourceDelete
+* Adding A resource
+* Editing teh details of an existing Resource
+* Deleting an existing Resource
 * Adding Notes: Notes can be added for a resource
 
 ##Screen Shots
@@ -52,8 +52,22 @@ Resource Home Screen will display all the resources saved by the logged  User in
 * Notes Screen
 ![Notes](https://github.com/AccelNA/aws-coe/blob/master/contents/images/Bookmark/bookmark16.PNG)<br/>
 
+##<a name="Technology"></a>Technologies Used
+
+a. Database: DynamoDB by amazon
+
+b. Serverside: Java
+
+c. Web Framework: Spring
+
+d. Web Server: Apache Tomcat
+
+e. ClientSide: Angular JS
+
+##<a name="Build"></a>How to build
 
 
 [Features]: #Features
 [Functionality]: #Functionality
-
+[Technologies Used]: #Technology
+[How to build]: #Build
