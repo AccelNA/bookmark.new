@@ -66,13 +66,20 @@ Resource Home Screen will display all the resources saved by the logged  User in
 
 ##<a name="Build"></a>How to build
 To build this application You need to have some configurations done in your Eclipse IDE
+
 **Prerequisites.<br>**
+
 * Eclipse version should be kepler or LUna, The most preffered version is Kepler
 * It should haved Aws Toolkit for eclipse configured .Please refer this link for more details of installing the aws toolkit for eclipse  [http://aws.amazon.com/eclipse/](http://aws.amazon.com/eclipse/).
-**Building the Application.<br>*
-* Create a AWS JAVA Web Project 
 
+**Building the Application.<br>**
 
+* Create a AWS JAVA Web Project with the name bookmark.new
+* Then copy the things in the webcontent folder in downloaded code to the Webcontent folder in the newly Created project and the rest of the code in the src folder created inside the javaResources of the newly created project
+* Create the Four tables in the aws DynamoDB with the table name specified in the service.java files of the folder .
+* Please refer the code to in the service.java file to get to know the specified hash key and range key for each table.
+* There will be a AWS credential file inside the src of teh newly created project, Please dont forget to ignore that file before committing to git or any other place where there is public access to your code.
+* 
 [Technologies Used]: #Technology
 [Features]: #Features
 [Functionality]: #Functionality
