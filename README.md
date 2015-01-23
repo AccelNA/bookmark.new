@@ -54,15 +54,15 @@ Resource Home Screen will display all the resources saved by the logged  User in
 
 ##<a name="Technology"></a>Technologies Used
 
-* Cloud: Amazon Web Services (AWS)
-* Database: Amazon DynamoDB 
-* Server-side: Java
-* Web Framework: Spring
-* Frontend Framework: AngularJS
-* RWD: Bootstrap 
+
 
 ##<a name="Build"></a>How to build
-
+To build this application You need to have some configurations done in your Eclipse IDE
+**Prerequisites.<br>**
+* Eclipse version should be kepler or LUna, The most preffered version is Kepler
+* It should haved Aws Toolkit for eclipse configured .Please refer this link for more details of installing the aws toolkit for eclipse  [http://aws.amazon.com/eclipse/](http://aws.amazon.com/eclipse/).
+**Building the Application.<br>*
+* Create a AWS JAVA Web Project 
 
 [Features]: #Features
 [Functionality]: #Functionality
