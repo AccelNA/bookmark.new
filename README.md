@@ -3,10 +3,20 @@ bookmark.new
 
 Bookmark.new is a Bookmarking tool for managing digital resources.. 
 ###Table of Contents  
+* [Technologies Used][]
 * [Features][]
 * [Functionality][]
-* [Technologies Used][]
 * [How to build][]
+
+##<a name="Technology"></a>Technologies Used
+
+* Cloud: Amazon Web Services (AWS)
+* Database: Amazon DynamoDB
+* Server-side: Java
+* Web Framework: Spring
+* Frontend Framework: AngularJS
+* RWD: Bootstrap
+
 
 ##<a name="Features"></a>Features
 Bookmark.new is a tool which helps users to save the meta data of the Resources and keep a track of the same, this application helps users to bookmark the Resources; that the user may not be able to  refer immediately. The user will be able to bookmark the resource with priority is yet another feature. If the resource is very important for the user , he can bookmark the resource with a high priority and if the resource is not very important for the user but need to remember the same then he can bookmark the resource with a low priority. The user can add notes of a particular resource after refferring the same can be done using this tool.The user will be able to book mark anytype of resource here like if he want to bookmark a song he can do that or he want to bookmark an important document of angular js he will be able to do that too.Moreover bookmark.new is a cloud enabled tool which saves the data into Dynamodb( The nosql service provided by amazon) which enhances fast and huge data saving .
@@ -52,14 +62,7 @@ Resource Home Screen will display all the resources saved by the logged  User in
 * Notes Screen
 ![Notes](https://github.com/AccelNA/aws-coe/blob/master/contents/images/Bookmark/bookmark16.PNG)<br/>
 
-##<a name="Technology"></a>Technologies Used
 
-* Cloud: Amazon Web Services (AWS)
-* Database: Amazon DynamoDB
-* Server-side: Java
-* Web Framework: Spring
-* Frontend Framework: AngularJS
-* RWD: Bootstra
 
 ##<a name="Build"></a>How to build
 To build this application You need to have some configurations done in your Eclipse IDE
@@ -69,7 +72,8 @@ To build this application You need to have some configurations done in your Ecli
 **Building the Application.<br>*
 * Create a AWS JAVA Web Project 
 
+
+[Technologies Used]: #Technology
 [Features]: #Features
 [Functionality]: #Functionality
-[Technologies Used]: #Technology
 [How to build]: #Build
