@@ -54,15 +54,12 @@ Resource Home Screen will display all the resources saved by the logged  User in
 
 ##<a name="Technology"></a>Technologies Used
 
-a. Database: DynamoDB by amazon
-
-b. Serverside: Java
-
-c. Web Framework: Spring
-
-d. Web Server: Apache Tomcat
-
-e. ClientSide: Angular JS
+* Cloud: Amazon Web Services (AWS)
+* Database: Amazon DynamoDB 
+* Server-side: Java
+* Web Framework: Spring
+* Frontend Framework: AngularJS
+* RWD: Bootstrap 
 
 ##<a name="Build"></a>How to build
 
