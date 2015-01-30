@@ -96,19 +96,19 @@ public class ResourceController {
       } 
       
       
-      @RequestMapping(value = "/activityadd", method = RequestMethod.POST)
-      public @ResponseBody ResponseEntity<String> addActivity(@RequestBody String activity) throws JSONException {
-
-          try {
-              resourceFacade.addActivity(activity); 
-                 } catch (Exception e) {
-              System.out.println("Exception thrown  :" + e);
-              return new ResponseEntity<String>("failed", HttpStatus.PRECONDITION_FAILED);
-          }
-             
-               return new ResponseEntity<String>("success", HttpStatus.OK);
-        
-      }
+//      @RequestMapping(value = "/activityadd", method = RequestMethod.POST)
+//      public @ResponseBody ResponseEntity<String> addActivity(@RequestBody String activity) throws JSONException {
+//
+//          try {
+//              resourceFacade.addActivity(activity); 
+//                 } catch (Exception e) {
+//              System.out.println("Exception thrown  :" + e);
+//              return new ResponseEntity<String>("failed", HttpStatus.PRECONDITION_FAILED);
+//          }
+//             
+//               return new ResponseEntity<String>("success", HttpStatus.OK);
+//        
+//      }
       @RequestMapping(value = "/resourcegroup", method = RequestMethod.GET)
       public @ResponseBody ResponseEntity<String> getResourceGroup(HttpServletRequest request,
               HttpServletResponse response) throws JSONException {
