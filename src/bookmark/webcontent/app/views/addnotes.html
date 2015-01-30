@@ -1,0 +1,103 @@
+<div data-ng-init="initnotes()">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".navbar-inverse-collapse"> <i
+					class="icon-reorder shaded"></i>
+				</a> <a class="brand" href="#"> Resource Home </a>
+
+				<div class="nav-collapse collapse navbar-inverse-collapse">
+
+					<ul class="nav pull-right">
+						<li><a href="#/resource">Resource </a></li>
+						<li><a href="#/resourcegroup">Resource Group </a></li>
+						<li><a href="#/signin">Log out </a></li>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container" ng-controller="resourceController">
+		<div class="row">
+			<div class="span6 offset3">
+				<div class="content">
+					<div class="module">
+						<div class="module-head">
+							<h3>Resource Management</h3>
+						</div>
+						<div class="module-body">
+							<alert ng-repeat="alert in alerts" type="{{alert.type}}"
+								close="closeAlert($index)">{{alert.msg}}</alert>
+							<form name="noteform" class="form-horizontal row-fluid"
+								ng-submit="fncreateNote(noteform.$valid)" novalidate>
+								
+								<div class="control-group">
+									<label class="control-label" for="Bookmark_resource_name">Resource
+										Name</label>
+									<div class="controls">
+										<input type="hidden" name="Bookmark_activity_Resource_name"
+											ng-model="userData.Bookmark_activity_Resource_name"> 
+											<input type="hidden" name="bookmark_user_token"
+											ng-model="userData.token"> 
+										<input type="text" name="userData.Bookmark_resource_name" 
+									data-ng-model="resourcename" class="span10" required  readonly/>
+                                    <p ng-show="noteform.Bookmark_resource_name.$invalid && !noteform.Bookmark_resource_name.$pristine" class="help-block has-error"> Resource Name is required.</p>
+							    </div>
+									</div>
+									
+								<div class="control-group">
+									<label class="control-label" for="Bookmark_activity_notes">
+										Notes</label>
+									<div class="controls">
+										<textarea  name="Bookmark_activity_notes"
+											ng-model="userData.Bookmark_activity_notes"
+											class="span10" required></textarea>
+										<p ng-show="noteform.Bookmark_resource_decription.$invalid && !noteform.Bookmark_resource_decription.$pristine"
+											class="help-block has-error">Description is required.</p>
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<div class="controls">
+										<button type="submit" class="btn btn-primary pull-left"
+											ng-disabled="noteform.$invalid">Add Notes
+											</button>
+									
+									<p ng-show="successmsg" class="help-block has-error" ng-bind="successmsg"></p> 
+								</div>
+							</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--/.content-->
+			</div>
+			<!--/.span9-->
+		</div>	
+		<div class="row">
+			<div class="span12">
+				<input type="text" ng-model="search" placeholder="Search...">
+			</div>
+		</div>
+
+		<table data-ng-table="tableParams" class="table table-bordered">
+			<tr data-ng-repeat="notes in tabledata | filter:search">
+            <td data-title="'Resource Name'"  sortable="'resourceName'">
+                {{notes.activity_resourcename}}
+            </td>
+            
+            <td data-title="'Notes'">
+                {{notes.note}}
+            </td>
+            
+			<!--  	<td data-title="'Action'" align="center" style="text-align: center;">
+				<i class="icon-tasks" ng-click="fnAddNotes( resource.resourceName );" title="Add Notes"></i>
+					<i class="icon-pencil" ng-click="fnEditresource( resource );" title="Edit"></i>
+					<i class="icon-remove" ng-click="fnRemoveResource( resource );"
+					confirmation-needed="Are you sure you want to delete this user?"
+					title="Delete"></i>
+				</td>
+				-->
+			</tr>
+		</table>
+	</div>

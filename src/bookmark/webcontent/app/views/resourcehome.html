@@ -1,0 +1,56 @@
+<div data-ng-init="getresource()">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container" ng-controller="resourceController">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".navbar-inverse-collapse"> <i
+					class="icon-reorder shaded"></i>
+				</a> <a class="brand" href="#"> Resource Home </a>
+
+				<div class="nav-collapse collapse navbar-inverse-collapse">
+
+					<ul class="nav pull-right">
+
+						
+
+						<li><a href="#/resource">Resource </a></li>
+
+						<li><a href="#/resourcegroup">Resource Group </a></li>
+						<li><a href="#/signin">Log out </a></li>
+
+						<!--  <li><a href="#/userlist"> User Management </a></li>
+						<li><a href="#/forgotpassword"> Forgot your password? </a></li>
+
+						<li><a href="#/changepassword"> Change Password </a></li>
+						<li><a href="#/logout" ng-click="logoutuser"> logout </a></li>-->
+					</ul>
+				</div>
+				<!-- /.nav-collapse -->
+			</div>
+		</div>
+		<!-- /navbar-inner -->
+	</div>
+<table data-ng-table="tableParams" class="table table-bordered">
+			<tr data-ng-repeat="resource in tabledata | filter:search" >
+            <td data-title="'Resource Name'" at-sortable at-initial-sorting="asc" at-attribute ="'resourcePriority'" >
+                {{resource.resourceName}}
+            </td>
+            
+            <td data-title="'Description'">
+                {{resource.resourceDescription}}
+            </td>
+             <td data-title="'Resource-Path'">
+                {{resource.resourcePath}}
+            </td>
+            <td data-title="'Resource-Priority'"  >
+                {{resource.resourcePriority}}
+            </td>
+            <td data-title="'Resource-Group-Name'">
+                {{resource.resourceGroupName}}
+            </td>
+				<td data-title="'Resource-Created-Date'">
+                {{resource.createdDate}}
+            </td>
+			</tr>
+		</table>
+</div>

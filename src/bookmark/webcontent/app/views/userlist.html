@@ -1,0 +1,71 @@
+<div class="container" ng-controller="userController" data-ng-init="userList()">
+    <div class="row">
+	    <div class="span6 offset3">
+		    <div class="content">
+			    <div class="module">
+				    <div class="module-head">
+					    <h3>User Management</h3>
+				    </div>
+				    <div class="module-body">
+                        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+					    <form name="userForm" class="form-horizontal row-fluid" ng-submit="fnAdduser(userForm.$valid)" novalidate>
+                            <input type="hidden" name="id" ng-model="userData.id"  >
+						    <div class="control-group">
+							    <label class="control-label" for="name">Name</label>
+							    <div class="controls">
+								    <input type="text" name="name" ng-model="userData.name" class="span10" required >
+                                    <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block has-error">Name is required.</p>
+							    </div>
+						    </div>
+
+                            <div class="control-group">
+							    <label class="control-label" for="emailId">Email Id</label>
+							    <div class="controls">
+								    <input type="email" name="emailId" ng-model="userData.emailId" class="span10" required>
+                                    <p ng-show="userForm.emailId.$invalid && !userForm.emailId.$pristine" class="help-block has-error">Enter a valid email.</p>
+							    </div>
+						    </div>
+                            
+                            <div class="control-group">
+							    <label class="control-label" for="name">Address</label>
+							    <div class="controls">
+                                    <textarea name="address" ng-model="userData.address" class="span10" required></textarea>
+                                    <p ng-show="userForm.address.$invalid && !userForm.address.$pristine" class="help-block has-error">Name is required.</p>
+							    </div>
+						    </div>
+
+						    <div class="control-group">
+							    <div class="controls">
+								    <button type="submit" class="btn btn-primary pull-left" ng-disabled="userForm.$invalid">Add User</button>
+							    </div>
+						    </div>
+					    </form>
+				    </div>
+			    </div>
+		    </div><!--/.content-->
+	    </div><!--/.span9-->         
+    </div>
+   <div class="row">
+        <div class="span12">
+            <input type="text" ng-model="search" placeholder="Search...">
+        </div>
+    </div>
+   
+    <table data-ng-table="tableParams" class="table table-bordered">       
+        <tr data-ng-repeat="user in $data | filter:search">
+            <td data-title="'Name'"  sortable="'name'">
+                {{user.name}}
+            </td>
+             <td data-title="'Email Id'">
+                {{user.emailId}}
+            </td>
+            <td data-title="'Address'">
+                {{user.address}}
+            </td>
+            <td data-title="'Action'" align="center" style="text-align: center;">
+            <i class="icon-pencil" ng-click="fnEdituser( user );" title="Edit"></i>
+            <i class="icon-remove" ng-click="fnRemoveUser( user.id );" confirmation-needed="Are you sure you want to delete this user?" title="Delete"></i>
+        </td>
+        </tr>
+    </table>
+</div>

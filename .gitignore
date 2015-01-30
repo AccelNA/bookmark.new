@@ -1,0 +1,7 @@
+.gitconfig
+.settings
+.classpath
+.project
+build
+src/util
+src/AwsCredentials.properties
