@@ -3,30 +3,33 @@
  *//*
 This handles retrieving data and is used by userController
 */
-bookmarkApp.service('resourcegroupService', function ($http,$resource) {
-
-	var resourcegroupdetails = $resource('v1/resourcegroupadd');
-	var resourcegroup =  $resource('v1/resourcegroupget/:bookmark_user_token');
-	var editresourcegroup = $resource('v1/resourcegroupedit',{},{'update': { method: 'PUT' }});
-	var removeresourcegroup =$resource ('v1/resourcegroupdelete/:bookmark_user_token/:bookmark_resource_groupName')
+bookmarkApp.service('resourcegroupService',['$http','$resource','serviceHelper', function ($http,$resource,serviceHelper) {
+   var resourcegroup  = serviceHelper.Resourcegroup;
+	//var resourcegroupdetails = $resource('v1/resourcegroupadd');
+	//var resourcegroup =  $resource('v1/resourcegroupget/:bookmark_user_token');
+	//var editresourcegroup = $resource('v1/resourcegroupedit',{},{'update': { method: 'PUT' }});
+	//var removeresourcegroup =$resource ('v1/resourcegroupdelete/:bookmark_user_token/:bookmark_resource_groupName')
 	var resource = {};
 
     //Registration
 	 resource.addresourcegroup = function (postData) {
-     return resourcegroupdetails.save(postData).$promise;
+     return resourcegroup.save(postData).$promise;
 
     }
 	 resource.getGroups = function (token) {
-		   var data =resourcegroup.query({bookmark_user_token: token}).$promise;
+		 $http.defaults.headers.common['token']= token;
+		   var data =resourcegroup.query().$promise;
 		   return data;
 	    };
 	    
    resource.editresourcegroup = function(postdata){
-	   return editresourcegroup.update(postdata).$promise;  
+	   return resourcegroup.update(postdata).$promise;  
    }
    
    resource.removeresourcegroup = function(groupname,token){
-	   return removeresourcegroup.delete({bookmark_user_token: token , bookmark_resource_groupName:groupname}).$promise;
+	   $http.defaults.headers.common['token']= token;
+	   $http.defaults.headers.common['name']= groupname;
+	   return removeresourcegroup.delete().$promise;
    }
 //    //Add User
 //    user.addUser = function (postData) {
@@ -92,4 +95,4 @@ bookmarkApp.service('resourcegroupService', function ($http,$resource) {
 //    }
     
     return resource;
-});
+}]);

@@ -2,6 +2,9 @@ package bookmark.controller;
 
 import java.util.Calendar;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +32,7 @@ public class ResourceController {
         
 
         
-      @RequestMapping(value = "/resourceadd", method = RequestMethod.POST)
+      @RequestMapping(value = "/resource", method = RequestMethod.POST)
       public @ResponseBody ResponseEntity<String> addResource(@RequestBody String resource) throws JSONException {
 
           try {  String date = Calendar.getInstance().getTime().toString();
@@ -49,7 +52,7 @@ public class ResourceController {
                return new ResponseEntity<String>("success", HttpStatus.OK);
         
       }
-      @RequestMapping(value = "/resourcegroupadd", method = RequestMethod.POST)
+      @RequestMapping(value = "/resourcegroup", method = RequestMethod.POST)
       public @ResponseBody ResponseEntity<String> addResourceGroup(@RequestBody String resourcegroup) throws JSONException {
 
           try {
@@ -71,10 +74,12 @@ public class ResourceController {
                return new ResponseEntity<String>("success", HttpStatus.OK);
         
       }
-      @RequestMapping(value = "/resourcegroupgetname/{bookmark_user_token}", method = RequestMethod.GET)
-      public @ResponseBody ResponseEntity<String> getResourceGroupName(@PathVariable String bookmark_user_token) throws JSONException {
-
+      @RequestMapping(value = "/resourcegroupgetname", method = RequestMethod.GET)
+      public @ResponseBody ResponseEntity<String> getResourceGroupName(HttpServletRequest request,
+              HttpServletResponse response) throws JSONException {
+          
           try {
+              String bookmark_user_token =request.getHeader("token");
               String tokendecoded = new String(Base64.decodeBase64(bookmark_user_token));
               String email = tokendecoded.split(":")[1];
               
@@ -104,10 +109,12 @@ public class ResourceController {
                return new ResponseEntity<String>("success", HttpStatus.OK);
         
       }
-      @RequestMapping(value = "/resourcegroupget/{bookmark_user_token}", method = RequestMethod.GET)
-      public @ResponseBody ResponseEntity<String> getResourceGroup(@PathVariable String bookmark_user_token) throws JSONException {
+      @RequestMapping(value = "/resourcegroup", method = RequestMethod.GET)
+      public @ResponseBody ResponseEntity<String> getResourceGroup(HttpServletRequest request,
+              HttpServletResponse response) throws JSONException {
 
           try {
+              String bookmark_user_token =request.getHeader("token");
               String tokendecoded = new String(Base64.decodeBase64(bookmark_user_token));
               String email = tokendecoded.split(":")[1];
               
@@ -121,10 +128,12 @@ public class ResourceController {
               return new ResponseEntity<String>("failed", HttpStatus.PRECONDITION_FAILED);
           }
       }
-          @RequestMapping(value = "/resourceget/{bookmark_user_token}", method = RequestMethod.GET)
-          public @ResponseBody ResponseEntity<String> getResource(@PathVariable String bookmark_user_token) throws JSONException {
+          @RequestMapping(value = "/resource", method = RequestMethod.GET)
+          public @ResponseBody ResponseEntity<String> getResource(HttpServletRequest request,
+                  HttpServletResponse response) throws JSONException {
 
               try {
+                  String bookmark_user_token =request.getHeader("token");
                   String tokendecoded = new String(Base64.decodeBase64(bookmark_user_token));
                   String email = tokendecoded.split(":")[1];
                   
@@ -139,7 +148,7 @@ public class ResourceController {
               }
                
       } 
-      @RequestMapping(value = "/resourcegroupedit", method = RequestMethod.PUT)
+      @RequestMapping(value = "/resourcegroup", method = RequestMethod.PUT)
       public @ResponseBody ResponseEntity<String> editResourceGroup(@RequestBody String resourcegroup) throws JSONException {
 
           try {  String date = Calendar.getInstance().getTime().toString();
@@ -162,10 +171,13 @@ public class ResourceController {
                return new ResponseEntity<String>("success", HttpStatus.OK);
         
       }
-      @RequestMapping(value = "/resourcegroupdelete/{bookmark_user_token}/{bookmark_resource_groupName}", method = RequestMethod.DELETE)
-      public @ResponseBody ResponseEntity<String> resourceGroupdelete(@PathVariable String bookmark_user_token, @PathVariable String bookmark_resource_groupName) throws JSONException {
+      @RequestMapping(value = "/resourcegroup", method = RequestMethod.DELETE)
+      public @ResponseBody ResponseEntity<String> resourceGroupdelete(HttpServletRequest request,
+              HttpServletResponse response) throws JSONException {
 
-          try {
+          try { 
+              String bookmark_user_token =request.getHeader("token");
+              String bookmark_resource_groupName =request.getHeader("name");
               String tokendecoded = new String(Base64.decodeBase64(bookmark_user_token));
               String email = tokendecoded.split(":")[1];
               
@@ -184,7 +196,7 @@ public class ResourceController {
           return new ResponseEntity<String>("failed", HttpStatus.PRECONDITION_FAILED);
       }   
       
-      @RequestMapping(value = "/resourceedit", method = RequestMethod.PUT)
+      @RequestMapping(value = "/resource", method = RequestMethod.PUT)
       public @ResponseBody ResponseEntity<String> editResource(@RequestBody String resource) throws JSONException {
 
           try {  String date = Calendar.getInstance().getTime().toString();
@@ -209,7 +221,7 @@ public class ResourceController {
       }
       
       
-    @RequestMapping(value = "/addnote", method = RequestMethod.POST)
+    @RequestMapping(value = "/activity", method = RequestMethod.POST)
     public @ResponseBody ResponseEntity<String> addNote(@RequestBody String note) throws JSONException {
 
         try {  String date = Calendar.getInstance().getTime().toString();
@@ -230,10 +242,14 @@ public class ResourceController {
       
     }
     
-    @RequestMapping(value = "/resourcedelete/{bookmark_user_token}/{bookmark_resource_name}/{bookmark_resource_priority}", method = RequestMethod.DELETE)
-    public @ResponseBody ResponseEntity<String> resourcedelete(@PathVariable String bookmark_user_token, @PathVariable String bookmark_resource_name, @PathVariable String bookmark_resource_priority) throws JSONException {
+    @RequestMapping(value = "/resource", method = RequestMethod.DELETE)
+    public @ResponseBody ResponseEntity<String> resourcedelete(HttpServletRequest request,
+            HttpServletResponse response) throws JSONException {
 
-        try {
+        try { 
+            String bookmark_user_token =request.getHeader("token");
+        String bookmark_resource_name =request.getHeader("name");
+        String bookmark_resource_priority =request.getHeader("priority");
             String tokendecoded = new String(Base64.decodeBase64(bookmark_user_token));
             String email = tokendecoded.split(":")[1];
             
@@ -253,13 +269,15 @@ public class ResourceController {
         }
         return new ResponseEntity<String>("failed", HttpStatus.PRECONDITION_FAILED);
     }   
-    @RequestMapping(value = "/activityget/{bookmark_user_token}/{bookmark_resource_name}", method = RequestMethod.GET)
-    public @ResponseBody ResponseEntity<String> getActivity(@PathVariable String bookmark_user_token,@PathVariable String bookmark_resource_name) throws JSONException {
+    @RequestMapping(value = "/activity", method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity<String> getActivity(HttpServletRequest request,
+            HttpServletResponse response) throws JSONException {
 
         try {
+            String bookmark_user_token =request.getHeader("token");
+            String bookmark_resource_name =request.getHeader("name");
             String tokendecoded = new String(Base64.decodeBase64(bookmark_user_token));
             String email = tokendecoded.split(":")[1];
-            
             JSONObject jObject = new JSONObject();
            String activity = jObject.put("Bookmark_activity_user_email", email).toString();
            activity = jObject.put("Bookmark_activity_Resource_name", bookmark_resource_name).toString();

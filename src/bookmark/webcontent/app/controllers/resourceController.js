@@ -1,5 +1,5 @@
 /*
-This controller retrieves data from the userService and associates it with the $scope
+This controller retrieves data from the  resource Service and associates it with the $scope
 */
 bookmarkApp.controller('resourceController',['$scope','$routeParams','resourceService', '$cookieStore','$location','$http','$resource','ngTableParams','$filter', function ($scope,$routeParams,resourceService, $cookieStore,$location, $http, $resource,ngTableParams,$filter) {
 	$scope.options = ["1-high", "2-medium","3-low"];
@@ -101,7 +101,7 @@ bookmarkApp.controller('resourceController',['$scope','$routeParams','resourceSe
 	    	$scope.postdata = {};
 	    	$scope.postdata.Bookmark_resource_name = $scope.resourcename;
 	    	$scope.postdata.Bookmark_resource_decription = $scope.resourcedescription;
-	    	$scope.postdata.Bookmark_resource_path = $cookieStore.get("path");
+	    	$scope.postdata.Bookmark_resource_path = $scope.resourcepath;
 	    	$scope.postdata.Bookmark_resource_priority = $scope.resourcepriority;
 	    	$scope.postdata.Bookmark_resourcegroup_name = $scope.resourcegroupname;
 	    	$scope.token = $cookieStore.get("token");
@@ -135,9 +135,10 @@ bookmarkApp.controller('resourceController',['$scope','$routeParams','resourceSe
 	        	$scope.userData.bookmark_user_token =$cookieStore.get("token");
 	        	resourceService.createNote($scope.userData).then(function(success){
 	        		$scope.userData = {};
+	        		 $scope.getactivity()
 	        		$location.path('/addnotes/'+rname);
 	        		$scope.successmsg = "Successfully added the Note";
-	           	    $scope.resourceForm.$setPristine();
+	           	    $scope.noteform.$setPristine();
 	        	  },function(error) {
 	        	    	$scope.showWait = false;
 	        	        $scope.errormsg = "The Resource  is not added due to some network issues";

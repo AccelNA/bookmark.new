@@ -28,6 +28,7 @@ import bookmark.service.UserService;
 
 import com.amazonaws.util.json.JSONException;
 import com.amazonaws.util.json.JSONObject;
+
 import org.apache.commons.codec.binary.Base64;
 @Controller
 public class UserController {
@@ -116,15 +117,17 @@ public class UserController {
 }
 
     @RequestMapping(value = "/userlogout", method = RequestMethod.POST)
-    public @ResponseBody ResponseEntity<String> logoutUser(@RequestBody String user) throws JSONException {
+    public @ResponseBody ResponseEntity<String> logoutUser(HttpServletRequest request,
+            HttpServletResponse response) throws JSONException {
         
         try {
-            JSONObject jObject = new JSONObject(user);
-            String token = jObject.getString("bookmark_user_token");
+        
+            JSONObject jObject = new JSONObject();
+            String token = request.getHeader("token");
             String tokendecoded = new String(Base64.decodeBase64(token));
            String password = tokendecoded.split(":")[0];
            String email = tokendecoded.split(":")[1];
-           user = jObject.put("bookmark_user_password", password).toString();
+          String user = jObject.put("bookmark_user_password", password).toString();
            user =   jObject.put("bookmark_user_email", email).toString();
 System.out.println("eeee"+password);
 System.out.println("eeee"+email);

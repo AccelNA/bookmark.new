@@ -2,26 +2,28 @@
   
 // This handles retrieving data and is used by controllers.
 
-bookmarkApp.service('loginService', function ($http,$resource) {
+bookmarkApp.service('loginService',['$http','$resource','serviceHelper', function ($http,$resource,serviceHelper) {
 
     var users = {};
     var $json ={};
+    var user = serviceHelper.User;
+   
     /*
 	 * This will fetch all user details in initial time So Authentication will
 	 * make minimum time
 	 */
 
-    this.getUser = function () {
-        var users = null;
-        return users;
-
-    };
+//    this.getUser = function () {
+//        var users = null;
+//        return users;
+//
+//    };
 
    /*
 	 * Authentication operation
 	 */
 
-    this.signIn = function (userName, password) {
+    users.signIn = function (userName, password) {
 
 
    var postData={
@@ -29,16 +31,7 @@ bookmarkApp.service('loginService', function ($http,$resource) {
 		   bookmark_user_email: userName,
            bookmark_user_password:password
                   };
-
-	
-	return $http({
-		method:"post",
-		url:'v1/userlogin',
-		params:{},
-		data:postData
-
-	});
-  
+ return user.login(postData).$promise;
       
  }
 
@@ -77,19 +70,14 @@ bookmarkApp.service('loginService', function ($http,$resource) {
             console.log("The email address doesn't exist");
         }
     };
-    this.logout = function (token) {
+    
+    
+    users.logout = function (token) {
+    	
 
-    	var postData={
-    	           bookmark_user_token:token
-    	                  };
-    	   
-    		return $http({
-    			method:"post",
-    			url:'v1/userlogout',
-    			params:{},
-    			data:postData
-    		});
-    	  
-    	      
+    	$http.defaults.headers.common['token']= token;
+    		return user.logout.$promise;
     	 }
-});
+    
+    return users;
+}]);

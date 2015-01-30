@@ -2,7 +2,7 @@
  * 
  */
 /*
-This controller retrieves data from the userService and associates it with the $scope
+This controller retrieves data from the resource group service
 */
 bookmarkApp.controller('resourceGroupController',['$scope','$routeParams','resourcegroupService','$cookieStore','$location','ngTableParams','$filter', function ($scope, $routeParams, resourcegroupService,$cookieStore,$location,ngTableParams,$filter) {
 

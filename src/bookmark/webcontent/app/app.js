@@ -10,17 +10,18 @@ bookmarkApp.config(function ($routeProvider,$httpProvider) {
 
     $httpProvider.defaults.withCredentials = false;
     $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  //  $httpProvider.interceptors.push('myHttpInterceptor');
+  //  $httpProvider.defaults.headers.common.token = "token";
 
     $routeProvider
 
     .when('/', {
         templateUrl: 'app/views/default.html',
-        controller: 'loginController'
+        controller: 'userController'
     })
     .when('/signin', {
         templateUrl: 'app/views/default.html',
-        controller: 'loginController'
+        controller: 'userController'
     })
     .when('/signup', {
         templateUrl : 'app/views/signup.html',
@@ -40,7 +41,7 @@ bookmarkApp.config(function ($routeProvider,$httpProvider) {
     })
     .when('/logout', {
         templateUrl : 'app/views/login.html',
-        controller  : 'logoutController'
+        controller  : 'userController'
     })
    .when('/resourcehome', {
         templateUrl : 'app/views/resourcehome.html',
@@ -71,3 +72,6 @@ bookmarkApp.config(function ($routeProvider,$httpProvider) {
     });
 
 });
+//bookmarkApp.run(['$rootScope', '$location', '$cookieStore', '$http', function ($rootScope, $location, $cookieStore, $http) { 
+//	 $httpProvider.interceptors.push('httpInterceptor');
+//	}]);

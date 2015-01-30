@@ -1,15 +1,16 @@
 /*
 This handles retrieving data and is used by userController
 */
-bookmarkApp.service('userService', function ($http,$resource) {
-
-	var register = $resource('v1/user');
+bookmarkApp.service('userService',['$http','$resource','serviceHelper', function ($http,$resource,serviceHelper)  {
+var user = serviceHelper.User;
+	
 	 var user = {};
 
 	 	//Registration
 	 	user.signUp = function (postData) {
-    	return register.save(postData).$promise;
-
+	 		postData.action = "login";
+    	return user.register(postData).$promise;
+	 	};
     	
     	
     	
@@ -29,7 +30,7 @@ bookmarkApp.service('userService', function ($http,$resource) {
 //            "msg": "You have been registered successfully."
 //        }];
 //        return $result;
-    }
+    
 
 //    //Add User
 //    user.addUser = function (postData) {
@@ -95,4 +96,5 @@ bookmarkApp.service('userService', function ($http,$resource) {
 //    }
     
     return user;
-});
+
+	        }]);

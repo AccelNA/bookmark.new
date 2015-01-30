@@ -16,7 +16,7 @@
 						<li><a href="#/resource">Resource </a></li>
 
 						<li><a href="#/resourcegroup">Resource Group </a></li>
-						<li><a href="#/signin">Log out </a></li>
+						<li><a href="#/logout">Log out </a></li>
 				</div>
 			</div>
 		</div>
@@ -40,10 +40,6 @@
 									<div class="controls">
 										<input type="hidden" name="bookmark_user_token"
 											ng-model="userData.token"> 
-											<input type="hidden" name="Bookmark_resourcegroup_name"
-											ng-model="userData.Bookmark_resourcegroup_name">
-											<input type="hidden" name="Bookmark_resource_priority"
-											ng-model="userData.Bookmark_resource_priority" readonly>
 											<input type="text"
 											name="Bookmark_resource_name"
 											ng-model="resourcename" class="span10"
@@ -58,7 +54,7 @@
 										Priority</label>
 									<div class="controls">
 										<select data-ng-options="options1 for options1 in options"
-											data-ng-model="resourcepriority"></select>
+											data-ng-model="resourcepriority" readonly></select>
 										<p
 											ng-show="resourceForm.Bookmark_resource_priority.$invalid && !resourceForm.Bookmark_resource_priority.$pristine"
 											class="help-block has-error">Resource Priority is
