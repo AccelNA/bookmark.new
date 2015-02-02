@@ -10,9 +10,7 @@ bookmarkApp.service('resourceService',['$http','$resource','serviceHelper', func
 
 	resource.resourcegroupname = function (token) {
 		  $http.defaults.headers.common['token']= token;
-		  
 		  var data = Resourcegroup.ByName().$promise;
-
 	   return data;
     };
 
@@ -34,14 +32,11 @@ bookmarkApp.service('resourceService',['$http','$resource','serviceHelper', func
 	    
 	    resource.removeresource = function(resourceName,token,resourcePriority){
 	    	$http.defaults.headers.common['token']= token;
-	    	$http.defaults.headers.common['name']= resourceName;
-	    	$http.defaults.headers.common['priority']= resourcePriority;
-	 	   return baseResource.delete().$promise;
+	 	   return baseResource.removeresource({bookmark_resource_name: resourceName , bookmark_resource_priority:resourcePriority}).$promise;
 	    }
 	    resource.getactivity = function (token,resourceName) {
 	    	$http.defaults.headers.common['token']= token;
-	    	$http.defaults.headers.common['name']= resourceName;
-			   var data =  note.query().$promise;
+			   var data =  note.byName({bookmark_resource_name: resourceName}).$promise;
 			   return data;
 		    }; 
     return resource;

@@ -10,8 +10,6 @@ bookmarkApp.config(function ($routeProvider,$httpProvider) {
 
     $httpProvider.defaults.withCredentials = false;
     $httpProvider.defaults.useXDomain = true;
-  //  $httpProvider.interceptors.push('myHttpInterceptor');
-  //  $httpProvider.defaults.headers.common.token = "token";
 
     $routeProvider
 
@@ -72,6 +70,3 @@ bookmarkApp.config(function ($routeProvider,$httpProvider) {
     });
 
 });
-//bookmarkApp.run(['$rootScope', '$location', '$cookieStore', '$http', function ($rootScope, $location, $cookieStore, $http) { 
-//	 $httpProvider.interceptors.push('httpInterceptor');
-//	}]);

@@ -85,7 +85,6 @@ public class ResourceController {
               
               JSONObject jObject = new JSONObject();
              String resourcegroup = jObject.put("bookmark_user_email", email).toString();
-              //resourcegroup = jObject.put("Bookmark_resourcegroup_name", resourcename).toString();
               String responseData = resourceFacade.getResourceGroup(resourcegroup);
               return new ResponseEntity<String>(responseData, HttpStatus.OK);
                  } catch (Exception e) {
@@ -95,20 +94,7 @@ public class ResourceController {
              
       } 
       
-      
-//      @RequestMapping(value = "/activityadd", method = RequestMethod.POST)
-//      public @ResponseBody ResponseEntity<String> addActivity(@RequestBody String activity) throws JSONException {
-//
-//          try {
-//              resourceFacade.addActivity(activity); 
-//                 } catch (Exception e) {
-//              System.out.println("Exception thrown  :" + e);
-//              return new ResponseEntity<String>("failed", HttpStatus.PRECONDITION_FAILED);
-//          }
-//             
-//               return new ResponseEntity<String>("success", HttpStatus.OK);
-//        
-//      }
+
       @RequestMapping(value = "/resourcegroup", method = RequestMethod.GET)
       public @ResponseBody ResponseEntity<String> getResourceGroup(HttpServletRequest request,
               HttpServletResponse response) throws JSONException {
@@ -120,7 +106,6 @@ public class ResourceController {
               
               JSONObject jObject = new JSONObject();
              String resourcegroup = jObject.put("bookmark_user_email", email).toString();
-              //resourcegroup = jObject.put("Bookmark_resourcegroup_name", resourcename).toString();
               String responseData = resourceFacade.getResourceGroupdetails(resourcegroup);
               return new ResponseEntity<String>(responseData, HttpStatus.OK);
                  } catch (Exception e) {
@@ -139,7 +124,6 @@ public class ResourceController {
                   
                   JSONObject jObject = new JSONObject();
                  String resourcegroup = jObject.put("bookmark_user_email", email).toString();
-                  //resourcegroup = jObject.put("Bookmark_resourcegroup_name", resourcename).toString();
                   String responseData = resourceFacade.getResourceDetails(resourcegroup);
                   return new ResponseEntity<String>(responseData, HttpStatus.OK);
                      } catch (Exception e) {
@@ -159,8 +143,6 @@ public class ResourceController {
               String tokendecoded = new String(Base64.decodeBase64(token));
               String email = tokendecoded.split(":")[1];
               resourcegroup =jObject.remove("bookmark_user_token").toString();
-//              resourcegroup =jObject.remove("groupName").toString();
-//              resourcegroup =jObject.remove("groupDescription").toString();
               resourcegroup = jObject.put("bookmark_user_email", email).toString();
               resourceFacade.updateResourceGroup(resourcegroup); 
                  } catch (Exception e) {
@@ -171,20 +153,17 @@ public class ResourceController {
                return new ResponseEntity<String>("success", HttpStatus.OK);
         
       }
-      @RequestMapping(value = "/resourcegroup", method = RequestMethod.DELETE)
+      @RequestMapping(value = "/resourcgroupedelete/{bookmark_resource_groupName}", method = RequestMethod.DELETE)
       public @ResponseBody ResponseEntity<String> resourceGroupdelete(HttpServletRequest request,
-              HttpServletResponse response) throws JSONException {
+              HttpServletResponse response, @PathVariable String bookmark_resource_groupName) throws JSONException {
 
           try { 
               String bookmark_user_token =request.getHeader("token");
-              String bookmark_resource_groupName =request.getHeader("name");
               String tokendecoded = new String(Base64.decodeBase64(bookmark_user_token));
               String email = tokendecoded.split(":")[1];
               
               JSONObject jObject = new JSONObject();
              String resourcegroup = jObject.put("Bookmark_resourcegroup_name", bookmark_resource_groupName).toString();
-             
-              //resourcegroup = jObject.put("Bookmark_resourcegroup_name", resourcename).toString();
         Boolean  result = resourceFacade.resourceGroupdelete(bookmark_resource_groupName);
         if (result = true){
               return new ResponseEntity<String>("success", HttpStatus.OK);
@@ -207,8 +186,6 @@ public class ResourceController {
               String tokendecoded = new String(Base64.decodeBase64(token));
               String email = tokendecoded.split(":")[1];
               resource =jObject.remove("bookmark_user_token").toString();
-//              resourcegroup =jObject.remove("groupName").toString();
-//              resourcegroup =jObject.remove("groupDescription").toString();
               resource = jObject.put("bookmark_user_email", email).toString();
               resourceFacade.updateResource(resource); 
                  } catch (Exception e) {
@@ -242,23 +219,18 @@ public class ResourceController {
       
     }
     
-    @RequestMapping(value = "/resource", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/resourcedelete/{bookmark_resource_name}/{bookmark_resource_priority}", method = RequestMethod.DELETE)
     public @ResponseBody ResponseEntity<String> resourcedelete(HttpServletRequest request,
-            HttpServletResponse response) throws JSONException {
+            HttpServletResponse response, @PathVariable String bookmark_resource_name, @PathVariable String bookmark_resource_priority) throws JSONException {
 
         try { 
             String bookmark_user_token =request.getHeader("token");
-        String bookmark_resource_name =request.getHeader("name");
-        String bookmark_resource_priority =request.getHeader("priority");
             String tokendecoded = new String(Base64.decodeBase64(bookmark_user_token));
             String email = tokendecoded.split(":")[1];
-            
             JSONObject jObject = new JSONObject();
            String resource = jObject.put("Bookmark_resource_name", bookmark_resource_name).toString();
             resource = jObject.put("Bookmark_resource_user_email", email).toString();
             resource = jObject.put("Bookmark_resource_priority", bookmark_resource_priority).toString();
-           
-            //resourcegroup = jObject.put("Bookmark_resourcegroup_name", resourcename).toString();
       Boolean  result = resourceFacade.resourcedelete(resource);
       if (result = true){
             return new ResponseEntity<String>("success", HttpStatus.OK);
@@ -269,13 +241,12 @@ public class ResourceController {
         }
         return new ResponseEntity<String>("failed", HttpStatus.PRECONDITION_FAILED);
     }   
-    @RequestMapping(value = "/activity", method = RequestMethod.GET)
+    @RequestMapping(value = "/getactivity/bookmark_resource_name", method = RequestMethod.GET)
     public @ResponseBody ResponseEntity<String> getActivity(HttpServletRequest request,
-            HttpServletResponse response) throws JSONException {
+            HttpServletResponse response, @PathVariable String bookmark_resource_name) throws JSONException {
 
         try {
             String bookmark_user_token =request.getHeader("token");
-            String bookmark_resource_name =request.getHeader("name");
             String tokendecoded = new String(Base64.decodeBase64(bookmark_user_token));
             String email = tokendecoded.split(":")[1];
             JSONObject jObject = new JSONObject();

@@ -10,18 +10,19 @@ bookmarkApp.controller('resourceController',['$scope','$routeParams','resourceSe
 	$scope.priority={};
 	var resourceName = $routeParams.name;
 	var descriptionData = $routeParams.description;
-	//var path = $routeParams.path;
 	var selectedpriority = $routeParams.selectedpriority;
 	var groupname = $routeParams.groupname;
 	var rname =$routeParams.resourcename;
 	
+	//resource group name list
 	$scope.getgroupname = function(){
 	  resourceService.resourcegroupname($scope.token).then(function (respData) {
 		$scope.data = respData;
 		$scope.getresource();
 	  });
-	//  var x =0;
 	};
+	
+	//resource list
     $scope.getresource = function () {
     	$scope.token = $cookieStore.get("token");
     	resourceService.getresource($scope.token).then(function (respData){
@@ -69,9 +70,8 @@ bookmarkApp.controller('resourceController',['$scope','$routeParams','resourceSe
         	});    
         	}    
         };
-        
+//edit resource
         $scope.fnEditresource = function (resource) {
-        	alert("------Vidya---"+resource.resourceName+"--Test---"+resource.resourcePath+"===="+resource.resourcePriority+"\\\\"+resource.resourceGroupName+"......."+resource.resourceDescription);
 	    	$scope.resourcedata = resource;
 	    	$scope.Bookmark_resource_name = resource.resourceName;
 	    	$scope.Bookmark_resource_decription = resource.resourceDescription ? resource.resourceDescription: null;
@@ -82,6 +82,7 @@ bookmarkApp.controller('resourceController',['$scope','$routeParams','resourceSe
 	    	$location.path('/resourceedit/'+$scope.Bookmark_resource_name+"/"+$scope.Bookmark_resource_decription+"/"+$scope.Bookmark_resource_priority+"/"+$scope.Bookmark_resourcegroup_name);
 	    	var x = 0;
 	    };
+//init for update
 	    $scope.initupdateresource = function () {
 	    	$scope.resourcename = resourceName;
 	    	$scope.resourcepath = $cookieStore.get("path");
@@ -95,9 +96,8 @@ bookmarkApp.controller('resourceController',['$scope','$routeParams','resourceSe
 	    	$scope.getgroupname();
 	    };
 	    
-	    
+//updsate resource	    
 	    $scope.fnUpdateresource = function () {
-	    	alert("------Vidya---"+$scope.resourcename+"--Test---"+$scope.resourcepath+"===="+$scope.resourcepriority+"\\\\"+$scope.resourcegroupname+"......."+$scope.resourcedescription);
 	    	$scope.postdata = {};
 	    	$scope.postdata.Bookmark_resource_name = $scope.resourcename;
 	    	$scope.postdata.Bookmark_resource_decription = $scope.resourcedescription;
@@ -106,7 +106,6 @@ bookmarkApp.controller('resourceController',['$scope','$routeParams','resourceSe
 	    	$scope.postdata.Bookmark_resourcegroup_name = $scope.resourcegroupname;
 	    	$scope.token = $cookieStore.get("token");
 	    	$scope.postdata.bookmark_user_token = $scope.token;
-	    	
 	    	resourceService.editresource($scope.postdata).then(function(success){
         		$scope.userData = {};
         		 $scope.getresource();
@@ -120,15 +119,13 @@ bookmarkApp.controller('resourceController',['$scope','$routeParams','resourceSe
 	    	
 	    };
 	    
-	    $scope.fnAddNotes =function(resourcename){
-	    	$location.path('/addnotes/'+resourcename);
-	    	
-	    }
+// note page init with resource name	   
 	    $scope.initnotes =function(){
 	    	$scope.resourcename = rname;
 	    	 $scope.getactivity();
 	    	var x=0;
 	    }
+// create note    
 	    $scope.fncreateNote = function (isValid) {
 	        if (isValid) {
 	        	$scope.userData.Bookmark_activity_Resource_name =rname;
@@ -145,6 +142,7 @@ bookmarkApp.controller('resourceController',['$scope','$routeParams','resourceSe
 	        	});    
 	        	}    
 	        };
+//Remove resource	        
 	        $scope.fnRemoveResource = function (resource) {
 	        	$scope.resourceName =resource.resourceName;
 	        	$scope.resourcePriority = resource.resourcePriority;
@@ -160,6 +158,7 @@ bookmarkApp.controller('resourceController',['$scope','$routeParams','resourceSe
 	            	});    
 	            	} ;   
 	            	
+	//get all notes list            	
 	            	 $scope.getactivity = function () {
 	            		 $scope.resourceName = rname
 	            	    	$scope.token = $cookieStore.get("token");
@@ -174,8 +173,6 @@ bookmarkApp.controller('resourceController',['$scope','$routeParams','resourceSe
 	            	            {
 	            	                total: $scope.tabledata.length, // length of data
 	            	                getData: function ($defer, params) {
-	            	                    // use build-in angular filtermain
-	            	                    // debugger;
 	            	                    var orderedData = params.sorting() ? $filter('orderBy')($scope.tabledata, params.orderBy()) : $scope.tabledata;
 	            	                    var orderedData = params.filter() ? $filter('filter')(orderedData, params.filter()) : $scope.tabledata;
 	            	                    $scope.notes = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());

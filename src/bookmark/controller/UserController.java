@@ -35,10 +35,7 @@ public class UserController {
     private static final String HMAC_ALGO = "HmacSHA256";
     
    
-    // @Autowired
-    // @Qualifier("userService")
-    // UserService userService;
-
+  
     @Autowired
     // @Qualifier("userFacade")
     UserFacade userFacade;
@@ -98,21 +95,11 @@ public class UserController {
         JSONObject jObject = new JSONObject(user);
         String password = jObject.getString("bookmark_user_password");
         String email = jObject.getString("bookmark_user_email");
-//        String token = password.concat(":").concat(email);
-//        byte[] bytesEncoded = Base64.encodeBase64(token.getBytes());
-//        String tokengenerated = bytesEncoded.toString();
-//        System.out.println("eeee"+tokengenerated);
-//        System.out.println("eeee"+new String(bytesEncoded));
-//        
-        
         String authString = password + ":" + email;
         System.out.println("auth string: " + authString);
         byte[] authEncBytes = Base64.encodeBase64(authString.getBytes());
         String authStringEnc = new String(authEncBytes);
         System.out.println("Base64 encoded auth string: " + authStringEnc);
-        
-        
-        
         return authStringEnc;
 }
 
@@ -129,8 +116,6 @@ public class UserController {
            String email = tokendecoded.split(":")[1];
           String user = jObject.put("bookmark_user_password", password).toString();
            user =   jObject.put("bookmark_user_email", email).toString();
-System.out.println("eeee"+password);
-System.out.println("eeee"+email);
             if (token != null || email != null|| password!=null) {
                 boolean result = userFacade.logoutUser(user);
                 if (result) {

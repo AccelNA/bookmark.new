@@ -11,8 +11,7 @@ bookmarkApp.controller('resourceGroupController',['$scope','$routeParams','resou
 	var selectedAdvmt = $routeParams.name;
 	var descriptionData = $routeParams.description;
 	
-//	alert("------first val---"+selectedAdvmt+"--second val---"+descriptionData);
-    //Add User
+
     $scope.fnAddresourcegroup = function (isValid) {
         if (isValid) {
         	
@@ -39,13 +38,9 @@ bookmarkApp.controller('resourceGroupController',['$scope','$routeParams','resou
 	    };
 
 
-//    //Edit User
-//    $scope.fnEdituser = function (userData) {
-//        $scope.userData = userData;
+
 //
-//    };
-//
-    //Delete User
+    //Delete Group
     $scope.fnRemoveResourceGroup = function (groupName) {
     	$scope.groupName =groupName
     	$scope.token = $cookieStore.get("token");
@@ -61,12 +56,9 @@ bookmarkApp.controller('resourceGroupController',['$scope','$routeParams','resou
         	});    
         	} ;   
 
-//
-//    /*
-//    * All User List should be shwoing here
-//    * /view/userList.html file is using
-//    */
-//
+
+
+// update group
 	    $scope.initUpdate = function () {
 	    	$scope.nm = selectedAdvmt;
 	    	if("null" !== descriptionData) {
@@ -77,7 +69,6 @@ bookmarkApp.controller('resourceGroupController',['$scope','$routeParams','resou
 	    };
 	    
 	    $scope.updateVal = function () {
-	    	alert("------Vidya---"+$scope.nm+"--Test---"+$scope.desc);
 	    	$scope.postdata = {};
 	    	$scope.postdata.Bookmark_resourcegroup_name = $scope.nm;
 	    	$scope.postdata.Bookmark_resourcegroup_decription = $scope.desc
@@ -93,8 +84,10 @@ bookmarkApp.controller('resourceGroupController',['$scope','$routeParams','resou
         	    	$scope.showWait = false;
         	        $scope.errormsg = "The Resource  is not updated due to some network issues";
         	}); 
-	    	alert("------Vidya---"+$scope.nm+"--Test---"+$scope.desc);
+	
 	    };
+	    
+//grouplist
 	    
         $scope.grouplist = function () {
         	$scope.token = $cookieStore.get("token");
@@ -109,8 +102,6 @@ bookmarkApp.controller('resourceGroupController',['$scope','$routeParams','resou
 	            {
 	                total: $scope.tabledata.length, // length of data
 	                getData: function ($defer, params) {
-	                    // use build-in angular filtermain
-	                    // debugger;
 	                    var orderedData = params.sorting() ? $filter('orderBy')($scope.tabledata, params.orderBy()) : $scope.tabledata;
 	                    var orderedData = params.filter() ? $filter('filter')(orderedData, params.filter()) : $scope.tabledata;
 	                    $scope.groups = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());

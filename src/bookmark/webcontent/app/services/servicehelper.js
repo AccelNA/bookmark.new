@@ -3,13 +3,14 @@
  */
 bookmarkApp.service('serviceHelper',['$http','$resource', function ($http,$resource) {
     return {
-    	BaseResources: $resource('v1/resource',{},{'update': { method: 'PUT' }}),
-    	Activity:  $resource('v1/activity'),
-    	Resourcegroup: $resource('v1/resourcegroup',{},
+    	BaseResources: $resource('v1/resource',{},{'update': { method: 'PUT' },
+    		removeresource: {url:'v1/resourcedelete/:bookmark_resource_name/:bookmark_resource_priority', method: 'delete'}}),
+    	Activity:  $resource('v1/activity',{},{byName:{url:'v1/getactivity/:bookmark_resource_name',method:'GET', isArray:true}}),
+     	Resourcegroup: $resource('v1/resourcegroup',{},
     			
     			{'update': { method: 'PUT' },
-    		 	 ByName: { url: 'v1/resourcegroupgetname', method: 'GET', isArray: true}
-    		
+    		 	 ByName: { url: 'v1/resourcegroupgetname', method: 'GET', isArray: true},
+    			removegroup: {url:'v1/resourcgroupedelete/:bookmark_resource_groupName', method: 'delete'}	
     		}),
      
     	User: $resource('v1/user',{},
@@ -19,9 +20,6 @@ bookmarkApp.service('serviceHelper',['$http','$resource', function ($http,$resou
         		 	logout: { url: 'v1/userlogout', method: 'POST'},
         		    register: { url: 'v1/user', method: 'POST'}
         }),	
-//    	Login: $resource('v1/userlogin'),
-//    	Logout: $resource('v1/userlogout'),
-//    	 register = $resource('v1/user')
     	
     	UserAction : $resource('v1/user/:action', {action: '@action'}, {
             requestToken: { method: 'POST'}
