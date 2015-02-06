@@ -22,9 +22,9 @@ bookmarkApp.service('resourcegroupService',['$http','$resource','serviceHelper',
 	   return resourcegroup.update(postdata).$promise;  
    }
    
-   resource.removeresourcegroup = function(groupname,token){
+   resource.removeresourcegroup = function(id,token){
 	   $http.defaults.headers.common['token']= token;
-	   return resourcegroup.removeresource({bookmark_resource_groupName:groupname}).$promise;
+	   return resourcegroup.removeresource({Resourcegroup_id:id}).$promise;
    }
 
     return resource;

@@ -33,20 +33,20 @@
                         <alert data-ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 					    <form name="resourcegroupForm" class="form-horizontal row-fluid" ng-submit="fnAddresourcegroup(resourcegroupForm.$valid)" novalidate>
 						    <div class="control-group">
-							    <label class="control-label" for="Bookmark_resourcegroup_name">Group Name</label>
+							    <label class="control-label" for="Resourcegroup_name">Group Name</label>
 							    <div class="controls">
-							    <input type="hidden" name="bookmark_user_token" ng-model="userData.token"  >
-								    <input type="text" name="Bookmark_resourcegroup_name" value="nm" ng-model="userData.Bookmark_resourcegroup_name" class="span10" required >
-                                    <p ng-show="resourcegroupForm.Bookmark_resourcegroup_name.$invalid && !resourcegroupForm.Bookmark_resourcegroup_name.$pristine" class="help-block has-error"> Resource GroupName is required.</p>
+							    <input type="hidden" name="Resourcegroup_user_token" ng-model="userData.token"  >
+								    <input type="text" name="Resourcegroup_name" value="nm" ng-model="userData.Resourcegroup_name" class="span10" required >
+                                    <p ng-show="resourcegroupForm.Resourcegroup_name.$invalid && !resourcegroupForm.Resourcegroup_name.$pristine" class="help-block has-error"> Resource GroupName is required.</p>
 							    </div>
 						    </div>
 
                             
                             <div class="control-group">
-							    <label class="control-label" for="Bookmark_resourcegroup_decription">Resource Group Description</label>
+							    <label class="control-label" for="Resourcegroup_decription">Resource Group Description</label>
 							    <div class="controls">
-                                    <textarea name="Bookmark_resourcegroup_decription" value="desc" ng-model="userData.Bookmark_resourcegroup_decription" class="span10" required></textarea>
-                                    <p ng-show="resourcegroupForm.Bookmark_resourcegroup_decription.$invalid && !resourcegroupForm.Bookmark_resourcegroup_decription.$pristine" class="help-block has-error">Description is required.</p>
+                                    <textarea name="Resourcegroup_decription" value="desc" ng-model="userData.Resourcegroup_decription" class="span10" required></textarea>
+                                    <p ng-show="resourcegroupForm.Resourcegroup_decription.$invalid && !resourcegroupForm.Resourcegroup_decription.$pristine" class="help-block has-error">Description is required.</p>
 							    </div>
 						    </div>
 
@@ -72,6 +72,7 @@
    
     <table data-ng-table="tableParams" class="table table-bordered">       
         <tr data-ng-repeat="groups in tabledata | filter:search">
+       
             <td data-title="'Resource Group Name'"  sortable="'groupName'">
                 {{groups.groupName}}
             </td>
@@ -81,7 +82,7 @@
             </td>
             <td data-title="'Action'" align="center" style="text-align: center;">
             <i class="icon-pencil" ng-click="fnEditgroup( groups );" title="Edit"></i>
-            <i class="icon-remove" ng-click="fnRemoveResourceGroup(groups.groupName );" confirmation-needed="Are you sure you want to delete this user?" title="Delete"></i>
+            <i class="icon-remove" ng-click="fnRemoveResourceGroup(groups.id);" confirmation-needed="Are you sure you want to delete this user?" title="Delete"></i>
         </td>
         </tr>
     </table>

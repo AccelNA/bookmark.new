@@ -1,4 +1,4 @@
-<div data-ng-init="initUpdate()">
+`<div data-ng-init="initUpdate()">
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -27,18 +27,19 @@
                         <alert data-ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 					    <form name="resourcegroupForm" class="form-horizontal row-fluid" ng-submit="updateVal()" novalidate>
 						    <div class="control-group">
-							    <label class="control-label" for="Bookmark_resourcegroup_name">Group Name</label>
+							    <label class="control-label" for="Resourcegroup_name">Group Name</label>
 							    <div class="controls">
-								    <input type="text" name="Bookmark_resourcegroup_name" data-ng-model="nm" class="span10" required  readonly>
-                                    <p ng-show="resourcegroupForm.Bookmark_resourcegroup_name.$invalid && !resourcegroupForm.Bookmark_resourcegroup_name.$pristine" class="help-block has-error"> Resource GroupName is required.</p>
+								    <input type="text" name="Resourcegroup_name" data-ng-model="nm" class="span10" required >
+								     <input type="hidden" name="Resourcegroup_id" ng-model="id"  >
+                                    <p ng-show="resourcegroupForm.Resourcegroup_name.$invalid && !resourcegroupForm.Resourcegroup_name.$pristine" class="help-block has-error"> Resource GroupName is required.</p>
 							    </div>
 						    </div>
               
                             <div class="control-group">
-							    <label class="control-label" for="Bookmark_resourcegroup_decription">Resource Group Description</label>
+							    <label class="control-label" for="Resourcegroup_decription">Resource Group Description</label>
 							    <div class="controls">
-                                    <textarea name="Bookmark_resourcegroup_decription" data-ng-model="desc" class="span10" required></textarea>
-                                    <p ng-show="resourcegroupForm.Bookmark_resourcegroup_decription.$invalid && !resourcegroupForm.Bookmark_resourcegroup_decription.$pristine" class="help-block has-error">Description is required.</p>
+                                    <textarea name="Resourcegroup_decription" data-ng-model="desc" class="span10" required></textarea>
+                                    <p ng-show="resourcegroupForm.Resourcegroup_decription.$invalid && !resourcegroupForm.Resourcegroup_decription.$pristine" class="help-block has-error">Description is required.</p>
 							    </div>
 						    </div>
 

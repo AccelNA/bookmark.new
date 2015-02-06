@@ -30,9 +30,9 @@ bookmarkApp.service('resourceService',['$http','$resource','serviceHelper', func
 	        return note.save(postData).$promise; 
 	    }
 	    
-	    resource.removeresource = function(resourceName,token,resourcePriority){
+	    resource.removeresource = function(id,token){
 	    	$http.defaults.headers.common['token']= token;
-	 	   return baseResource.removeresource({bookmark_resource_name: resourceName , bookmark_resource_priority:resourcePriority}).$promise;
+	 	   return baseResource.removeresource({Resource_id: id}).$promise;
 	    }
 	    resource.getactivity = function (token,resourceName) {
 	    	$http.defaults.headers.common['token']= token;

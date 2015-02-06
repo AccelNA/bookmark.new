@@ -8,14 +8,14 @@ bookmarkApp.controller('resourceGroupController',['$scope','$routeParams','resou
 
 	
 	$scope.userData = {};
-	var selectedAdvmt = $routeParams.name;
+	var selectedname = $routeParams.name;
 	var descriptionData = $routeParams.description;
-	
+	var id = $routeParams.id;
 
     $scope.fnAddresourcegroup = function (isValid) {
         if (isValid) {
         	
-        	$scope.userData.bookmark_user_token =$cookieStore.get("token");
+        	$scope.userData.Resourcegroup_user_token =$cookieStore.get("token");
         	resourcegroupService.addresourcegroup($scope.userData).then(function(success){
         	$scope.userData = {};
         	$scope.grouplist();
@@ -31,9 +31,10 @@ bookmarkApp.controller('resourceGroupController',['$scope','$routeParams','resou
 	    //Edit group
 	    $scope.fnEditgroup = function (groups) {
 	    	$scope.groupdata = groups;
-	    	$scope.Bookmark_resourcegroup_name = groups.groupName;
-	    	$scope.Bookmark_resourcegroup_decription = groups.groupDescription ? groups.groupDescription: null;
-	    	$location.path('/resourcegroupedit/'+$scope.Bookmark_resourcegroup_name+"/"+$scope.Bookmark_resourcegroup_decription);
+	    	$scope.Resourcegroup_id=groups.id
+	    	$scope.Resourcegroup_name = groups.groupName;
+	    	$scope.Resourcegroup_decription = groups.groupDescription ? groups.groupDescription: null;
+	    	$location.path('/resourcegroupedit/'+$scope.Resourcegroup_id+"/"+$scope.Resourcegroup_name+"/"+$scope.Resourcegroup_decription);
    
 	    };
 
@@ -41,10 +42,10 @@ bookmarkApp.controller('resourceGroupController',['$scope','$routeParams','resou
 
 //
     //Delete Group
-    $scope.fnRemoveResourceGroup = function (groupName) {
-    	$scope.groupName =groupName
+    $scope.fnRemoveResourceGroup = function (id) {
+    	$scope.id =id;
     	$scope.token = $cookieStore.get("token");
-        result = resourcegroupService.removeresourcegroup($scope.groupName,$scope.token).then(function(success){
+        result = resourcegroupService.removeresourcegroup($scope.id,$scope.token).then(function(success){
         	$scope.grouplist();
         	$location.path('/resourcegroup');
         	$scope.successmsg = "Successfully Removed the resource group";
@@ -60,7 +61,8 @@ bookmarkApp.controller('resourceGroupController',['$scope','$routeParams','resou
 
 // update group
 	    $scope.initUpdate = function () {
-	    	$scope.nm = selectedAdvmt;
+	    	$scope.nm = selectedname;
+	    	$scope.id = id;
 	    	if("null" !== descriptionData) {
 	    		$scope.desc = descriptionData;
 	    	}else {
@@ -70,10 +72,11 @@ bookmarkApp.controller('resourceGroupController',['$scope','$routeParams','resou
 	    
 	    $scope.updateVal = function () {
 	    	$scope.postdata = {};
-	    	$scope.postdata.Bookmark_resourcegroup_name = $scope.nm;
-	    	$scope.postdata.Bookmark_resourcegroup_decription = $scope.desc
+	    	$scope.postdata.id = $scope.id;
+	    	$scope.postdata.Resourcegroup_name = $scope.nm;
+	    	$scope.postdata.Resourcegroup_decription = $scope.desc
 	    	$scope.token = $cookieStore.get("token");
-	    	$scope.postdata.bookmark_user_token = $scope.token;
+	    	$scope.postdata.Resourcegroup_user_token = $scope.token;
 	    	resourcegroupService.editresourcegroup($scope.postdata).then(function(success){
         		$scope.userData = {};
         		$scope.grouplist();

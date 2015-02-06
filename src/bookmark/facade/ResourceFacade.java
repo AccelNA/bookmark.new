@@ -21,11 +21,6 @@ public class ResourceFacade {
         
     }
 
-    public boolean addActivity(String activity) throws Exception {
-        return resourceService.addActivity(activity);
-        
-    }
-
     public String getResourceGroup(String resourcegroup) throws Exception {
         return resourceService.getresourcegroup(resourcegroup);   
     }
@@ -39,12 +34,12 @@ public class ResourceFacade {
         
     }
 
-    public String getResourceDetails(String resourcegroup) throws Exception {
-        return resourceService.getResourceDetails(resourcegroup);  
+    public String getResourceDetails(String email) throws Exception {
+        return resourceService.getResourceDetails(email);  
     }
 
-    public boolean resourceGroupdelete(String bookmark_resource_groupName) throws Exception {
-        return  resourceService.resourceGroupdelete(bookmark_resource_groupName);
+    public boolean resourceGroupdelete(String Resourcegroup_id) throws Exception {
+        return  resourceService.resourceGroupdelete(Resourcegroup_id);
     }
 
     public boolean updateResource(String resource) throws Exception {
@@ -57,8 +52,8 @@ public class ResourceFacade {
         
     }
 
-    public Boolean resourcedelete(String resource) throws Exception {
-        return  resourceService.resourcedelete(resource);
+    public Boolean resourcedelete(String Resource_id) throws Exception {
+        return  resourceService.resourcedelete(Resource_id);
     }
 
     public String getActivityDetails(String activity) throws Exception {

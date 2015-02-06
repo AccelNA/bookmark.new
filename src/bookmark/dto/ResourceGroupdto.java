@@ -1,6 +1,13 @@
 package bookmark.dto;
 
 public class ResourceGroupdto {
+    private String id;
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
     private String groupName;
     private String groupDescription;
     

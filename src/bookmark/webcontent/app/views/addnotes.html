@@ -37,22 +37,22 @@
 									<div class="controls">
 										<input type="hidden" name="Bookmark_activity_Resource_name"
 											ng-model="userData.Bookmark_activity_Resource_name"> 
-											<input type="hidden" name="bookmark_user_token"
-											ng-model="userData.token"> 
-										<input type="text" name="userData.Bookmark_resource_name" 
+											<input type="hidden" name="activity_user_token"
+											ng-model="userData.activity_user_token"> 
+										<input type="text" name="userData.Activity_resource_name" 
 									data-ng-model="resourcename" class="span10" required  readonly/>
                                     <p ng-show="noteform.Bookmark_resource_name.$invalid && !noteform.Bookmark_resource_name.$pristine" class="help-block has-error"> Resource Name is required.</p>
 							    </div>
 									</div>
 									
 								<div class="control-group">
-									<label class="control-label" for="Bookmark_activity_notes">
+									<label class="control-label" for="Activity_notes">
 										Notes</label>
 									<div class="controls">
-										<textarea  name="Bookmark_activity_notes"
-											ng-model="userData.Bookmark_activity_notes"
+										<textarea  name="Activity_notes"
+											ng-model="userData.Activity_notes"
 											class="span10" required></textarea>
-										<p ng-show="noteform.Bookmark_resource_decription.$invalid && !noteform.Bookmark_resource_decription.$pristine"
+										<p ng-show="noteform..Activity_notes.$invalid && !noteform..Activity_notes.$pristine"
 											class="help-block has-error">Description is required.</p>
 									</div>
 								</div>

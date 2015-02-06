@@ -7,7 +7,7 @@ function homeController($scope) {
 
 
 bookmarkApp.config(function ($routeProvider,$httpProvider) {
-
+	//$httpProvider.interceptors.push('authInterceptor');
     $httpProvider.defaults.withCredentials = false;
     $httpProvider.defaults.useXDomain = true;
 
@@ -49,11 +49,11 @@ bookmarkApp.config(function ($routeProvider,$httpProvider) {
         templateUrl : 'app/views/resourcegrouphome.html',
         controller  : 'resourceGroupController'
     })
-    .when('/resourcegroupedit/:name/:description', {
+    .when('/resourcegroupedit/:id/:name/:description', {
         templateUrl : 'app/views/resourcegroupedit.html',
         controller  : 'resourceGroupController'
     })
-    .when('/resourceedit/:name/:description/:selectedpriority/:groupname', {
+    .when('/resourceedit/:id/:name/:description/:selectedpriority/:groupname', {
         templateUrl : 'app/views/resourceedit.html',
         controller  : 'resourceController'
     })
