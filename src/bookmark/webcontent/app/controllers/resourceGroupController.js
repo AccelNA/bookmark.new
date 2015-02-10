@@ -43,6 +43,7 @@ bookmarkApp.controller('resourceGroupController',['$scope','$routeParams','resou
 //
     //Delete Group
     $scope.fnRemoveResourceGroup = function (id) {
+    	//alert(id);
     	$scope.id =id;
     	$scope.token = $cookieStore.get("token");
         result = resourcegroupService.removeresourcegroup($scope.id,$scope.token).then(function(success){

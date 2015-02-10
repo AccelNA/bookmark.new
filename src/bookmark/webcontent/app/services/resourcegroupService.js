@@ -24,7 +24,7 @@ bookmarkApp.service('resourcegroupService',['$http','$resource','serviceHelper',
    
    resource.removeresourcegroup = function(id,token){
 	   $http.defaults.headers.common['token']= token;
-	   return resourcegroup.removeresource({Resourcegroup_id:id}).$promise;
+	   return resourcegroup.removegroup({Resourcegroup_id:id}).$promise;
    }
 
     return resource;

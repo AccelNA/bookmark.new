@@ -346,7 +346,7 @@ public class ResourceService {
 
     public Boolean resourcedelete(String Resource_id) throws Exception {
         config();
-        String tableName = "Bookmark_Resource";
+        String tableName = "Resource";
         HashMap<String, AttributeValue> key = new HashMap<String, AttributeValue>();
         key.put("Resource_id", new AttributeValue().withS(Resource_id));
         DeleteItemRequest deleteItemRequest = new DeleteItemRequest()
